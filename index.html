@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <script src="SRController.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div ng-controller="SRChannelsController">
+    <h1>{{ header }}</h1>
+  </div>
+  <div>
+    <form name="myForm" ng-controller="SRChannelsController">
+      <label>
+        <input type="radio" ng-model="filter" value="Riks" ng-change="filterChanged()"> National
+      </label>
+      <label>
+        <input type="radio" ng-model="filter" value="Lokal" ng-change="filterChanged()"> Local
+      </label>
+      <label>
+        <input type="radio" ng-model="filter" value="Fler" ng-change="filterChanged()"> More
+      </label>
+    </form>
+  </div>
+  <div ng-controller="SRChannelsController">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Live broadcast link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in channels">
+          <td class="vert-align">
+            <img ng-src={{item.image}} height="70" width="70">
+          </td>
+          <td class="vert-align">
+            <b>{{item.name}} - {{item.channeltype}}</b>
+          </td>
+          <td class="vert-align">
+            <a href={{item.liveaudio.url}} type="audio/mpeg" class="playbutton">Play {{item.name}}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

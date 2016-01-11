@@ -1,0 +1,1 @@
+This is a simple experiment of using AngularJS for making a minimal app for the available channels on Swedish public radio.
